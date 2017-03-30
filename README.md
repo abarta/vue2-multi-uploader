@@ -2,6 +2,9 @@
 
 > Drag and drop multiple file uploader with Vue.js v2 and Axios
 
+**Demo**
+See live demo [here](https://abarta.github.io/vue2-multi-uploader/demo/).
+
 **Current Version**
 1.0.0
 
