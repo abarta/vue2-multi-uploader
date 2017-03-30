@@ -1,7 +1,7 @@
 {
   "name": "vue2-multi-uploader",
   "description": "Drag and drop multiple file uploader with Vue.js v2 and Axios",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Andrei Barta",
   "main": "dist/build.js",
   "repository": {
