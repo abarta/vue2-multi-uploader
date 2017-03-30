@@ -4,16 +4,20 @@
   "version": "1.0.0",
   "author": "Andrei Barta",
   "main": "dist/build.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:abarta/vue2-multi-uploader.git"
+  },
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-    "vue": "^2.2.1",
     "axios": "^0.15.3",
     "es6-promise": "~4.1.0"
   },
   "devDependencies": {
+    "vue": "^2.2.1",
     "babel-core": "^6.0.0",
     "babel-loader": "^6.0.0",
     "babel-preset-latest": "^6.0.0",
