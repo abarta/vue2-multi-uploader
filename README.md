@@ -1,28 +1,31 @@
 # vue2-multi-uploader
 
-> Drag and drop multiple file uploader with Vue.js v2 and Axios
+> A drag and drop multiple file uploader component that uses Vue.js v2 and Axios. Uploader shows file names, sizes and total size of files added. It also allows
+ setting a minimum required number of files to upload.
 
-**Demo**
+### Demo
 See live demo [here](https://abarta.github.io/vue2-multi-uploader/demo/).
 
-**Current Version**
-1.0.0
+### Current Version
+1.2.0
 
-**Install**
+### Install
 
 ``` bash
 npm install --save vue2-multi-uploader
 ```
-Import Component
-
+#### ES6
+```javascript
     import MultipleFileUploader from 'vue2-multi-uploader'
     export default {
+        ...
         components: {
             MultipleFileUploader
-        }
+        },
+        ...
     }
-
-**Props**
+```
+### Props
 
 | Prop name        | Type           | Required  |
 | ------------- |:-------------:| -----:|
@@ -31,37 +34,37 @@ Import Component
 | errorMessagePath | String     |    yes |
 | minItems | Number     |    no |
 
-postURL
+#### postURL
 Set your POST url in the postURL prop.
 
-JSON Responses
+#### JSON Responses
 Set JSON success and error response messages to your custom JSON responses via props:
 `successMessagePath`,
 `errorMessagePath`
 
-Required props example template
-``` bash
+Example template to use:
+``` html
 <multiple-file-uploader postURL="http://.." successMessagePath="" errorMessagePath=""></multiple-file-uploader>
 ```
-
 Minimum items to upload (optional)
-You can modify the minimum number of files required for the upload to take place by changing the value of minItems. Default if 2. 
-If you set this prop to 1, you can use this uploader for a single file upload, like so:
-``` bash
-<multiple-file-uploader postURL="http://.." successMessagePath="" errorMessagePath="" minItems="1"></multiple-file-uploader>
+You can modify the minimum number of files required for the upload to take place by changing the value of minItems prop. Default if set to 1. 
+Here is an example template for uploading a minimum of 5 items:
+``` html
+<multiple-file-uploader postURL="http://.." successMessagePath="" errorMessagePath="" :minItems="5"></multiple-file-uploader>
 ```
-**Dependencies**
-Axios ^v0.15.3
+### Dependencies
+Axios, ES6-Promise
 
-**CSS**
-Bootstrap CSS is used in demo but not required for the component.
+### CSS
 CSS style is not scoped so it's easy for you to overwrite your own style.
+Bootstrap CSS is used in demo but not required for the component.
 
-**LICENSE**
+### LICENSE
+
 ---
 The MIT License (MIT)
 
-Copyright (c) 2017 Andrei Barta
+Copyright (c) 2017 Andrei Barta @ UPDIVISION
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

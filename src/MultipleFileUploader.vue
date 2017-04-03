@@ -2,7 +2,7 @@
     <div class="uploadBox">
         <h3>Add files</h3>
         <form role="form" method="post" enctype="multipart/form-data" @submit.prevent="onSubmit">
-            <div class="uploadBoxMain" v-if="itemsAdded < minItems">
+            <div class="uploadBoxMain" v-if="!itemsAdded">
                 <div class="form-group">
                     <div class="dropArea" @ondragover="onChange">
                         Drop multiple files here.
@@ -35,7 +35,8 @@
             </div>
             <br>
             <div class="successMsg" v-if="successMsg !== ''">{{successMsg}}</div>
-            <div class="errorMsg" v-if="errorMsg !== ''">An error has occured:<br>{{errorMsg}}</div>
+            <div class="errorMsg" v-if="errorMsg !== ''">An error has occurred:<br>{{errorMsg}}</div>
+            <div class="errorMsg" v-if="itemsAdded && itemsAdded < minItems">Minimum {{minItems}} files need to be added to uploader. Please remove files and try again.</div>
         </form>
     </div>
 </template>
@@ -53,7 +54,7 @@ export default {
         },
         minItems: {
             type: Number,
-            default: 2
+            default: 1
         },
         successMessagePath: {
             type: String,
