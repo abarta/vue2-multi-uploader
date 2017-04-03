@@ -7,7 +7,7 @@
 See live demo [here](https://abarta.github.io/vue2-multi-uploader/demo/).
 
 ### Current Version
-1.2.0
+1.1.1
 
 ### Install
 
