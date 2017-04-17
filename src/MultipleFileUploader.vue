@@ -1,7 +1,7 @@
 <template>
     <div class="uploadBox">
         <h3>Add files</h3>
-        <form role="form" method="post" enctype="multipart/form-data" @submit.prevent="onSubmit">
+        <form role="form" enctype="multipart/form-data" @submit.prevent="onSubmit">
             <div class="uploadBoxMain" v-if="!itemsAdded">
                 <div class="form-group">
                     <div class="dropArea" @ondragover="onChange">
@@ -55,6 +55,14 @@ export default {
         minItems: {
             type: Number,
             default: 1
+        },
+        method: {
+            type: String,
+            default: 'post'
+        },
+        postMeta: {
+            type: [String, Array, Object],
+            default: ''
         },
         successMessagePath: {
             type: String,
@@ -122,18 +130,28 @@ export default {
 
         onSubmit() {
             this.isLoaderVisible = true;
-            axios.post(this.postURL, this.formData)
-                .then((response) => {
-                    this.isLoaderVisible = false;
-                    // Show success message
-                    this.successMsg = response+"."+this.successMessagePath;
-                    this.removeItems();
-                })
-                .catch((error) => {
-                    this.isLoaderVisible = false;
-                    this.errorMsg = error+"."+this.errorMessagePath;
-                    this.removeItems();
-                });
+
+            if (this.postMeta !== '') {
+                this.formData.append('postMeta', this.postMeta);
+            }
+
+            if (this.method === 'put' || this.method === 'post' ) {
+                axios({method: this.method, url: this.postURL, data: this.formData})
+                    .then((response) => {
+                        this.isLoaderVisible = false;
+                        // Show success message
+                        this.successMsg = response + "." + this.successMessagePath;
+                        this.removeItems();
+                    })
+                    .catch((error) => {
+                        this.isLoaderVisible = false;
+                        this.errorMsg = error + "." + this.errorMessagePath;
+                        this.removeItems();
+                    });
+            } else {
+                this.errorMsg = "This HTTP method is not allowed. Please use either 'put' or 'post' methods.";
+                this.removeItems();
+            }
         },
     }
 }

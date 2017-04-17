@@ -6,8 +6,10 @@
 ### Demo
 See live demo [here](https://abarta.github.io/vue2-multi-uploader/demo/).
 
-### Current Version
-1.1.1
+### Latest
+Optional prop `method` allows PUT method to be used. Default method remains POST, if you want to use PUT just add `method="put"` to your template.
+
+Optional `postMeta` prop added so you can include additional metadata that needs to be sent along. This prop can be in the form of a string, array or object.
 
 ### Install
 
@@ -33,6 +35,8 @@ npm install --save vue2-multi-uploader
 | successMessagePath      | String    |   yes |
 | errorMessagePath | String     |    yes |
 | minItems | Number     |    no |
+| method | String     |    no |
+| postMeta | String, Array, Object     |    no |
 
 #### postURL
 Set your POST url in the postURL prop.
