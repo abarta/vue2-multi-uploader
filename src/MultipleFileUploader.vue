@@ -131,7 +131,8 @@ export default {
         onSubmit() {
             this.isLoaderVisible = true;
 
-            if (this.postMeta !== '') {
+            if ((typeof this.postMeta === 'string' && this.postMeta !== '') ||
+                (typeof this.postMeta === 'object' && Object.keys(this.postMeta).length > 0)) {
                 this.formData.append('postMeta', this.postMeta);
             }
 
