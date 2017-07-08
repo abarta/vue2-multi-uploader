@@ -30,13 +30,15 @@
                 <!-- End Loader -->
             </div>
             <div>
-                <button type="submit" class="btn btn-primary btn-black btn-round" :disabled="itemsAdded < minItems">Upload</button>
+                <button type="submit" class="btn btn-primary btn-black btn-round" :disabled="itemsAdded < minItems || itemsAdded > maxItems">
+                    Upload</button>
                 <button type="button" class="btn btn-default btn-round" @click="removeItems">Cancel</button>
             </div>
             <br>
             <div class="successMsg" v-if="successMsg !== ''">{{successMsg}}</div>
             <div class="errorMsg" v-if="errorMsg !== ''">An error has occurred:<br>{{errorMsg}}</div>
-            <div class="errorMsg" v-if="itemsAdded && itemsAdded < minItems">Minimum {{minItems}} files need to be added to uploader. Please remove files and try again.</div>
+            <div class="errorMsg" v-if="itemsAdded && itemsAdded < minItems">Minimum {{minItems}} files need to be added to uploader. Please remove the files and try again.</div>
+            <div class="errorMsg" v-if="itemsAdded && itemsAdded > maxItems">A maximum of {{maxItems}} files can be uploaded each time. Please remove the files and try again.</div>
         </form>
     </div>
 </template>
@@ -55,6 +57,10 @@ export default {
         minItems: {
             type: Number,
             default: 1
+        },
+        maxItems: {
+            type: Number,
+            default: 30
         },
         method: {
             type: String,
@@ -95,9 +101,9 @@ export default {
         // http://scratch99.com/web-development/javascript/convert-bytes-to-mb-kb/
         bytesToSize(bytes) {
             const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
-            if (bytes == 0) return 'n/a';
+            if (bytes === 0) return 'n/a';
             let i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
-            if (i == 0) return bytes + ' ' + sizes[i];
+            if (i === 0) return bytes + ' ' + sizes[i];
             return (bytes / Math.pow(1024, i)).toFixed(2) + ' ' + sizes[i];
         },
 

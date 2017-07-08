@@ -7,6 +7,8 @@
 See live demo [here](https://abarta.github.io/vue2-multi-uploader/demo/).
 
 ### Latest
+Optional `maxItems` prop added to allow setting a maximum number of files allowed per upload. Default `maxItems` is set to 30.
+
 Optional `method` prop allows PUT method to be used. Default method remains POST, if you want to use PUT just add `method="put"` to your template.
 
 Optional `postMeta` prop added so you can include additional metadata that needs to be sent along. This prop can be in the form of a string, array or object and empty `postMeta` data is not sent. To pass a string use `:postMeta="'string'"`, to include an array you should use `:postMeta="['value']"` and for an object use `:postMeta="{name: 'value'}"`.
@@ -35,6 +37,7 @@ npm install --save vue2-multi-uploader
 | successMessagePath      | String    |   yes |
 | errorMessagePath | String     |    yes |
 | minItems | Number     |    no |
+| maxItems | Number     |    no |
 | method | String     |    no |
 | postMeta | String, Array, Object     |    no |
 
@@ -52,9 +55,9 @@ Example template to use:
 ```
 Minimum items to upload (optional)
 You can modify the minimum number of files required for the upload to take place by changing the value of minItems prop. Default if set to 1. 
-Here is an example template for uploading a minimum of 5 items:
+Here is an example template for uploading a minimum of 5 items and a maximum of 10 items:
 ``` html
-<multiple-file-uploader postURL="http://.." successMessagePath="" errorMessagePath="" :minItems="5"></multiple-file-uploader>
+<multiple-file-uploader postURL="http://.." successMessagePath="" errorMessagePath="" :minItems="5" :maxItems="10"></multiple-file-uploader>
 ```
 ### Dependencies
 Axios, ES6-Promise
