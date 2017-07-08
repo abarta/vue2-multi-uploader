@@ -7,7 +7,8 @@
 See live demo [here](https://abarta.github.io/vue2-multi-uploader/demo/).
 
 ### Latest
-Optional `maxItems` prop added to allow setting a maximum number of files allowed per upload. Default `maxItems` is set to 30.
+Optional `maxItems` prop added to allow setting a maximum number of files allowed per upload.  
+Default `maxItems` is set to 30.
 
 Optional `method` prop allows PUT method to be used. Default method remains POST, if you want to use PUT just add `method="put"` to your template.
 
@@ -31,15 +32,15 @@ npm install --save vue2-multi-uploader
 ```
 ### Props
 
-| Prop name        | Type           | Required  |
-| ------------- |:-------------:| -----:|
-| postURL      | String |  yes
-| successMessagePath      | String    |   yes |
-| errorMessagePath | String     |    yes |
-| minItems | Number     |    no |
-| maxItems | Number     |    no |
-| method | String     |    no |
-| postMeta | String, Array, Object     |    no |
+| Prop name        | Type           | Required  | Default  
+| ------------- |:-------------:| -----:| -----:|
+| postURL      | String |  yes |  -
+| successMessagePath      | String    |   yes | -
+| errorMessagePath | String     |    yes | -
+| minItems | Number     |    no | 1
+| maxItems | Number     |    no | 30
+| method | String     |    no | POST
+| postMeta | String, Array, Object     |    no | -
 
 #### postURL
 Set your POST url in the postURL prop.
@@ -54,7 +55,7 @@ Example template to use:
 <multiple-file-uploader postURL="http://.." successMessagePath="" errorMessagePath=""></multiple-file-uploader>
 ```
 Minimum items to upload (optional)
-You can modify the minimum number of files required for the upload to take place by changing the value of minItems prop. Default if set to 1. 
+You can modify the minimum number of files required for the upload to take place by changing the value of minItems prop. Default is set to 1. 
 Here is an example template for uploading a minimum of 5 items and a maximum of 10 items:
 ``` html
 <multiple-file-uploader postURL="http://.." successMessagePath="" errorMessagePath="" :minItems="5" :maxItems="10"></multiple-file-uploader>
