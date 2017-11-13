@@ -23,11 +23,9 @@
                 <p><strong>{{totalFileMessage}}</strong> {{itemsAdded}}</p>
                 <p><strong>{{totalUploadSizeMessage}}</strong> {{itemsTotalSize}}</p>
                 <button @click="removeItems">{{removeFileMessage}}</button>
-                <!-- Loader -->
                 <div class="loader" v-if="isLoaderVisible">
                     <div class="loaderImg"></div>
                 </div>
-                <!-- End Loader -->
             </div>
             <div>
                 <button type="submit" class="btn btn-primary btn-black btn-round" :disabled="itemsAdded < minItems || itemsAdded > maxItems">
@@ -79,67 +77,63 @@ export default {
             type: String,
             required: true
         },
-        header:{
+        headerMessage: {
           type: String,
           default: 'Add files'
         },
-        headerMessage:{
+        dropAreaPrimaryMessage: {
           type: String,
-          default: 'Add files'
+          default: 'Drop multiple files here'
         },
-        dropAreaPrimaryMessage:{
-          type: String,
-          default: 'Drop multiple files here.'
-        },
-        dropAreaSecondaryMessage:{
+        dropAreaSecondaryMessage: {
           type: String,
           default: 'or click to upload'
         },
-        fileNameMessage:{
+        fileNameMessage: {
           type: String,
           default: 'Names'
         },
-        fileSizeMessage:{
+        fileSizeMessage: {
           type: String,
           default: 'Sizes'
         },
-        totalFileMessage:{
+        totalFileMessage: {
           type: String,
           default: 'Total files:'
         },
-        totalUploadSizeMessage:{
+        totalUploadSizeMessage: {
           type: String,
           default: 'Total upload size:'
         },
-        removeFileMessage:{
+        removeFileMessage: {
           type: String,
           default: 'Remove files'
         },
-        uploadButtonMessage:{
+        uploadButtonMessage: {
           type: String,
           default: 'Upload'
         },
-        cancelButtonMessage:{
+        cancelButtonMessage: {
           type: String,
           default: 'Cancel'
         },
-        fileUploadErrorMessage:{
+        fileUploadErrorMessage: {
           type: String,
           default: 'An error has occurred'
         },
-        minFilesErrorMessage:{
+        minFilesErrorMessage: {
           type: String,
           default: 'Minimum files that need to be added to uploader'
         },
-        maxFilesErrorMessage:{
+        maxFilesErrorMessage:  {
           type: String,
           default: 'Maximum files that can be added to uploader'
         },
-        retryErrorMessage:{
+        retryErrorMessage: {
           type: String,
           default: 'Please remove the files and try again.'
         },
-        httpMethodErrorMessage:{
+        httpMethodErrorMessage: {
           type: String,
           default: "This HTTP method is not allowed. Please use either 'put' or 'post' methods."
         }
