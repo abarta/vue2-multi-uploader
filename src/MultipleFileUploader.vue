@@ -107,14 +107,6 @@ export default {
           type: String,
           default: 'Total files:'
         },
-        totalFileMessage:{
-          type: String,
-          default: 'Total files:'
-        },
-        totalUploadSizeMessage:{
-          type: String,
-          default: 'Total upload size:'
-        },
         totalUploadSizeMessage:{
           type: String,
           default: 'Total upload size:'
