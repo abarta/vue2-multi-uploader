@@ -97,9 +97,11 @@ Bootstrap CSS is used in demo but not required for the component.
 Class dropAreaDragging is active for giving some user feedback.
 Example:
 
-  .dropAreaDragging{
-      background-color:#ccc;
-  }
+```
+.dropAreaDragging{
+   background-color:#ccc;
+}
+```
 
 ### LICENSE
 
