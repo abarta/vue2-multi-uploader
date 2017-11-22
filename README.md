@@ -43,6 +43,9 @@ npm install --save vue2-multi-uploader
 | maxItems | Number     |    no | 30
 | method | String     |    no | POST
 | postMeta | String, Array, Object     |    no | -
+| postData |  Object  |    no | -
+| showHttpMessages | Boolean     |    no | true
+| postHeader |  Object     |    no | null
 
 ### Message Props
 All text in the component is also configurable. Below is the list of available props that can be configured, if necessary. Default values are provided for each prop.
@@ -90,6 +93,13 @@ Axios, ES6-Promise
 ### CSS
 CSS style is not scoped so it's easy for you to overwrite your own style.
 Bootstrap CSS is used in demo but not required for the component.
+
+Class dropAreaDragging is active for giving some user feedback.
+Example:
+
+  .dropAreaDragging{
+      background-color:#ccc;
+  }
 
 ### LICENSE
 

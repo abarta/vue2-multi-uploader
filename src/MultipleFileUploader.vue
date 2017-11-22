@@ -4,7 +4,7 @@
         <form role="form" enctype="multipart/form-data" @submit.prevent="onSubmit">
             <div class="uploadBoxMain" v-if="!itemsAdded">
                 <div class="form-group">
-                    <div class="dropArea" @ondragover="onChange">
+                    <div class="dropArea" @ondragover="onChange" :class="dragging ? 'dropAreaDragging' : ''" @dragenter="dragging=true" @dragend="dragging=false" @dragleave="dragging=false">
                         <h3>{{dropAreaPrimaryMessage}}</h3>
                         <input type="file" id="items" name="items[]" required multiple @change="onChange">
                         <p class="help-block">{{dropAreaSecondaryMessage}}</p>
@@ -68,6 +68,14 @@ export default {
         postMeta: {
             type: [String, Array, Object],
             default: ''
+        },
+        postData: {
+            type: [Object],
+            default: () => {}
+        },
+        postHeader:{
+          type: [Object],
+          default: () => {}
         },
         successMessagePath: {
             type: String,
@@ -136,6 +144,10 @@ export default {
         httpMethodErrorMessage: {
           type: String,
           default: "This HTTP method is not allowed. Please use either 'put' or 'post' methods."
+        },
+        showHttpMessages: {
+          type: Boolean,
+          default: true
         }
     },
 
@@ -144,6 +156,7 @@ export default {
      */
     data() {
         return {
+            dragging: false,
             items: [],
             itemsAdded: '',
             itemsNames: [],
@@ -191,6 +204,7 @@ export default {
             this.itemsNames = [];
             this.itemsSizes = [];
             this.itemsTotalSize = '';
+            this.dragging = false;
         },
 
         onSubmit() {
@@ -200,21 +214,30 @@ export default {
                 (typeof this.postMeta === 'object' && Object.keys(this.postMeta).length > 0)) {
                 this.formData.append('postMeta', this.postMeta);
             }
+            
+            if(typeof this.postData ==='object' && this.postData !== null && Object.keys(this.postData).length > 0){
+              for(var key in this.postData){
+                this.formData.append(key, this.postData[key]);
+              }
+            }
 
             if (this.method === 'put' || this.method === 'post' ) {
-                axios({method: this.method, url: this.postURL, data: this.formData})
+                axios({method: this.method, url: this.postURL, data: this.formData,headers:this.postHeader})
                     .then((response) => {
                         this.isLoaderVisible = false;
                         // Show success message
-                        this.successMsg = response + "." + this.successMessagePath;
+                        if(this.showHttpMessages)
+                          this.successMsg = response + "." + this.successMessagePath;
                         this.removeItems();
                     })
                     .catch((error) => {
                         this.isLoaderVisible = false;
-                        this.errorMsg = error + "." + this.errorMessagePath;
+                        if(this.showHttpMessages)
+                          this.errorMsg = error + "." + this.errorMessagePath;
                         this.removeItems();
                     });
             } else {
+                if(this.showHttpMessages)
                 this.errorMsg = this.httpMethodErrorMessage;
                 this.removeItems();
             }
