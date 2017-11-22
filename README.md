@@ -7,7 +7,8 @@
 See live demo [here](https://abarta.github.io/vue2-multi-uploader/demo/).
 
 ### Latest
-Message props contributed by Mushood via PR. Thank you!
+PostData and other changes contributed by [SergioReis97](https://github.com/SergioReis97) via PR. Thanks!
+Message props contributed by [Mushood](https://github.com/Mushood) via PR. Thank you!
 
 Optional `maxItems` prop added to allow setting a maximum number of files allowed per upload.  
 Default `maxItems` is set to 30.
