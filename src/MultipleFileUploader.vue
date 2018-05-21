@@ -229,12 +229,14 @@ export default {
                         if(this.showHttpMessages)
                           this.successMsg = response + "." + this.successMessagePath;
                         this.removeItems();
+                        this.$emit('upload-success', response);
                     })
                     .catch((error) => {
                         this.isLoaderVisible = false;
                         if(this.showHttpMessages)
                           this.errorMsg = error + "." + this.errorMessagePath;
                         this.removeItems();
+                        this.$emit('upload-error', error);
                     });
             } else {
                 if(this.showHttpMessages)
