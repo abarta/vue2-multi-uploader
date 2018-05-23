@@ -88,6 +88,19 @@ Here is an example template for uploading a minimum of 5 items and a maximum of 
 ``` html
 <multiple-file-uploader postURL="http://.." successMessagePath="" errorMessagePath="" :minItems="5" :maxItems="10"></multiple-file-uploader>
 ```
+### Events
+Fires `upload-success` or `upload-error` respectively. Success handler receives axios response object. Error handler receives axios error object.
+```html
+<multiple-file-uploader postURL="http://.." successMessagePath="" errorMessagePath="" @upload-success='success_handler'></multiple-file-uploader>
+```
+```javascript
+	...
+	success_handler: function(response){
+
+	},
+	...
+```
+
 ### Dependencies
 Axios, ES6-Promise
 
