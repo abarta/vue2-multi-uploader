@@ -1,5 +1,4 @@
-# REPO MOVED 
-https://github.com/updivision/vue2-multi-uploader
+# MOVED: https://github.com/updivision/vue2-multi-uploader
 
 # vue2-multi-uploader
 
