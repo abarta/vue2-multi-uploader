@@ -26,7 +26,7 @@ npm i @updivision/vue2-multi-uploader
 ```
 #### ES6
 ```javascript
-    import MultipleFileUploader from '@updivision/vue2-multi-uploader
+    import MultipleFileUploader from '@updivision/vue2-multi-uploader'
     export default {
         ...
         components: {
