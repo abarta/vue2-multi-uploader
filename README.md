@@ -22,11 +22,11 @@ Optional `postMeta` prop added so you can include additional metadata that needs
 ### Install
 
 ``` bash
-npm install --save vue2-multi-uploader
+npm i @updivision/vue2-multi-uploader
 ```
 #### ES6
 ```javascript
-    import MultipleFileUploader from 'vue2-multi-uploader'
+    import MultipleFileUploader from '@updivision/vue2-multi-uploader
     export default {
         ...
         components: {
